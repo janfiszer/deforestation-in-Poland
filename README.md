@@ -21,3 +21,6 @@ In this project, we will be using Sentinel-2 imagery of the Puszcza Karpacka for
 ## Note
 
 The external dataset from Kaggle will be used for training the model, while the Sentinel-2 imagery will be used for testing the model's performance on real-world data.
+
+### Info
+This readme file was created by, GPT-3 and will be updated soon.
