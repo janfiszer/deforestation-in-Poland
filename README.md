@@ -10,7 +10,7 @@ For this project, we will be using the U-Net architecture for image segmentation
 
 ## External Dataset
 
-We will be using an external dataset from Kaggle to train our image segmentation model to detect deforestation in the terrain of Puszcza Karpacka. The dataset consists of satellite images of the Puszcza Karpacka forest in Poland, and it includes annotations of deforested areas. 
+We will be using an external [dataset](https://www.kaggle.com/datasets/quadeer15sh/augmented-forest-segmentation/code) from Kaggle to train our image segmentation model to detect deforestation in the terrain of Puszcza Karpacka. This dataset was obtained from Land Cover Classification Track in DeepGlobe Challenge. For more details on the dataset refer the related publication - [DeepGlobe 2018: A Challenge to Parse the Earth through Satellite Images](https://arxiv.org/pdf/1805.06561.pdf). The images in the dataset were patched into images of size 256x256 to create more number of image samples.
 
 ## Sentinel-2 Imagery
 
