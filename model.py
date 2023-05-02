@@ -1,6 +1,6 @@
 import tensorflow as tf
 from keras.models import Model
-from keras.layers import Input, Dropout, Conv2D, MaxPool2D, Conv2DTranspose, Concatenate, concatenate
+from keras.layers import Input, Dropout, Conv2D, MaxPool2D, Conv2DTranspose, concatenate
 from keras.activations import relu
 
 from utils import config
@@ -9,8 +9,8 @@ from utils import config
 # up-sampling block from which is the decoder constructed
 def upsampling(previous_layer, to_concatenate, n_filters):
     conv2d_transpose = Conv2DTranspose(n_filters, kernel_size=config.KERNEL_SIZE, strides=2, padding="same")(previous_layer)
-    concatenate = tf.keras.layers.concatenate([conv2d_transpose, to_concatenate])
-    dropout = Dropout(0.5)(concatenate)
+    concat = tf.keras.layers.concatenate([conv2d_transpose, to_concatenate])
+    dropout = Dropout(0.5)(concat)
     conv2d = double_conv2d(dropout, n_filters)
 
     return conv2d

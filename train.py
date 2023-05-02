@@ -1,10 +1,21 @@
 import os
 import pickle
 
-
 import tensorflow as tf
+
 from utils import DataGenerator, config
 from model import UNet
+
+# def intersection_over_union(y_true, y_pred):
+#     tp = metrics.TruePositives()
+#     fp = metrics.FalsePositives()
+#     fn = metrics.FalseNegatives()
+#
+#     tp_count = tp.update_state(y_true, y_pred).result()
+#     fp_count = fp.update_state(y_true, y_pred).result()
+#     fn_count = fn.update_state(y_true, y_pred).result()
+#
+#     return tp_count.numpy()/(tp_count.numpy() + fp_count.numpy(), fn_count.numpy())
 
 
 def create_data_gen():
@@ -12,8 +23,6 @@ def create_data_gen():
     images_dir = os.path.join(config.DATASET_DIR, "images")
 
     data_gen = DataGenerator.DataGenerator(images_dir, masks_dir)
-
-    data_gen.map_preprocess()
 
     return data_gen
 
@@ -32,7 +41,7 @@ def train_model(model, train_batches, test_batches):
     # defining loss function and metrics
     loss = tf.keras.losses.BinaryCrossentropy()
     optimizer = tf.keras.optimizers.Adam(learning_rate=config.LEARNING_RATE)
-    intersection_over_union = tf.keras.metrics.IoU(num_classes=config.NUM_MASKS, target_class_ids=[0])
+    intersection_over_union = tf.keras.metrics.BinaryIoU()
 
     # compiling model
     model.compile(loss=loss, optimizer=optimizer, metrics=["acc", intersection_over_union])
@@ -43,18 +52,18 @@ def train_model(model, train_batches, test_batches):
 
 
 def save_model_and_logs(model, training, test_batches):
-    loss, metrics = model.evaluate(test_batches)
+    eval_results = model.evaluate(test_batches)
     print()
 
     try:
-        model_filepath = f"trained_models/{config.TRAINED_MODEL_DIR}/trained-acc{int(metrics[1] * 100)}.h5"
+        model_filepath = f"{config.TRAINED_MODEL_DIR}/trained-iou{int(eval_results[2] * 100)}.h5"
         model.save(model_filepath)
         print(f"Model successfully saved to file: {model_filepath}")
     except TypeError:
         print("Didn't manage to save the model due to an exception: ", TypeError)
 
     try:
-        history_filepath = f"trained_models/{config.TRAINED_MODEL_DIR}/training-history.pkl"
+        history_filepath = f"{config.TRAINED_MODEL_DIR}/training-history.pkl"
         with open(history_filepath, 'wb') as file:
             pickle.dump(training, file)
         print(f"Training successfully saved to file: {history_filepath}")
