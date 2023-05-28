@@ -63,7 +63,7 @@ def save_model_and_logs(model, training, test_batches):
         print("Didn't manage to save the model due to an exception: ", TypeError)
 
     try:
-        history_filepath = f"{config.TRAINED_MODEL_DIR}/training-history.pkl"
+        history_filepath = f"{config.TRAINED_MODEL_DIR}/training-history-iou{int(eval_results[2] * 100)}.pkl"
         with open(history_filepath, 'wb') as file:
             pickle.dump(training, file)
         print(f"Training successfully saved to file: {history_filepath}")
