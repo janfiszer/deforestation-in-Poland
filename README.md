@@ -22,5 +22,10 @@ In this project, we will be using Sentinel-2 imagery of the Puszcza Karpacka for
 
 The external dataset from Kaggle will be used for training the model, while the Sentinel-2 imagery will be used for testing the model's performance on real-world data.
 
+### Questions 
+[ ] How to find coordinates of an Image
+[ ] Resolution- is my solution right?
+
+
 ### Info
 This readme file was created by, GPT-3 and will be updated soon.
