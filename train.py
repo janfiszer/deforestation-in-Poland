@@ -6,17 +6,6 @@ import tensorflow as tf
 from utils import DataGenerator, config
 from model import UNet
 
-# def intersection_over_union(y_true, y_pred):
-#     tp = metrics.TruePositives()
-#     fp = metrics.FalsePositives()
-#     fn = metrics.FalseNegatives()
-#
-#     tp_count = tp.update_state(y_true, y_pred).result()
-#     fp_count = fp.update_state(y_true, y_pred).result()
-#     fn_count = fn.update_state(y_true, y_pred).result()
-#
-#     return tp_count.numpy()/(tp_count.numpy() + fp_count.numpy(), fn_count.numpy())
-
 
 def create_data_gen():
     masks_dir = os.path.join(config.DATASET_DIR, "masks")

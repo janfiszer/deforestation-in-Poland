@@ -17,7 +17,7 @@ def display_learning_curves(history, figsize=(12,6)):
 
     fig = plt.figure(figsize=figsize)
 
-    plt.subplot(1,3,1)
+    plt.subplot(1, 3, 1)
     plt.plot(epochs_range, acc, label="train accuracy")
     plt.plot(epochs_range, val_acc, label="validataion accuracy")
     plt.title("Accuracy")
@@ -45,8 +45,7 @@ def display_learning_curves(history, figsize=(12,6)):
     plt.show()
 
 
-# TODO: fix cmap miss mash
-def display(display_list, cmap=None):
+def display(display_list):
     plt.figure(figsize=(15, 15))
 
     alpha = 1.0
@@ -61,28 +60,6 @@ def display(display_list, cmap=None):
         plt.axis("off")
 
     plt.show()
-# def display(display_list, cmap=None):
-#     plt.figure(figsize=(15, 15))
-
-#     alpha = 1.0
-
-#     title = ["Input Image", "True Mask", "Predicted Mask", "Predicted Probabilities"]
-
-#     for i in range(len(display_list)):
-#         plt.subplot(1, len(display_list), i + 1)
-#         plt.title(title[i])
-#         if i == 3:
-#             plt.imshow(display_list[0], alpha=0.9)
-#             alpha = 0.15
-#             cmap = "cool"
-
-#         if cmap is None:
-#             plt.imshow(tf.keras.utils.array_to_img(display_list[i]), alpha=alpha)
-#         else:
-#             plt.imshow(tf.keras.utils.array_to_img(display_list[i]), alpha=alpha, cmap=cmap)
-#         plt.axis("off")
-
-#     plt.show()
 
 
 def count_values(array):

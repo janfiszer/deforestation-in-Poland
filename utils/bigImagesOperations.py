@@ -5,6 +5,19 @@ from utils import visualization
 
 
 def segment(sample_image, model, model_input_size, white_balance=0, display_images=False):
+    """
+    Function allowing to apply a segmentation model on an image which shape is bigger that the input.
+    It is done so by patching the input into model_input_size and predicting on them.
+    Then it is merged and returned. Note: in the input image is not divisible by model_input_size, the result image is
+    just truncated (possible improvement in the future)
+    :param sample_image: The big image to segment.
+    :param model: Segmentation model.
+    :param model_input_size: A tuple representing the input size of given model
+    :param white_balance: a int from 0 to 100 that describes the strength of white balancing.
+    0 the strongest, 100 the weakest.
+    :param display_images: A flag whether to display images that are predicted at the moment.
+    :return: A full mask of segmented images. Might be truncated
+    """
     input_stride = model_input_size[0]
 
     if white_balance > 0:
