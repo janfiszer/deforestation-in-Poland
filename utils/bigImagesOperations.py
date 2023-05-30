@@ -14,24 +14,30 @@ def segment(sample_image, model, model_input_size, white_balance=0, display_imag
     full_mask_size_y = int(sample_image.shape[1] * model_input_size[0]/input_stride)
     full_mask = np.zeros((full_mask_size_x, full_mask_size_y))
 
-    # number of segmentations to perform
-    n_cuts_x = int(full_mask_size_x * model_input_size[0])
-    n_cuts_y = int(full_mask_size_y * model_input_size[0])
+    # # number of segmentation s to perform
+    # n_cuts_x = int(full_mask_size_x * model_input_size[0])
+    # n_cuts_y = int(full_mask_size_y * model_input_size[0])
 
-    for i in range(n_cuts_x):
-        for j in range(n_cuts_y):
-            patch = sample_image[i*input_stride:(i+1)*input_stride, j * input_stride:(j+1) * input_stride, :]
+    print(full_mask_size_x, full_mask_size_y)
 
+    for x0 in range(input_stride, full_mask_size_x, input_stride):
+        for y0 in range(input_stride, full_mask_size_y, input_stride):
+            print(x0, y0)
+
+            patch = sample_image[x0 - input_stride:x0, y0 - input_stride:y0, :]
+
+            # preparing the patch as the U-Net input
             image = tf.keras.utils.array_to_img(patch)
             batch = np.array([tf.image.resize(image, size=model_input_size)])
 
             if display_images:
                 plt.imshow(image)
 
+            # prediction
             pred_mask = model.predict(batch, verbose=0)
-            
-            output_stride = model_input_size[0]
-            full_mask[i*output_stride:(i+1)*output_stride, j*output_stride:(j+1)*output_stride] = pred_mask.reshape(model_input_size)
+
+            # mapping the results in the correct place
+            full_mask[x0 - input_stride:x0, y0 - input_stride:y0] = pred_mask.reshape(model_input_size)
     
     return full_mask
 
