@@ -72,7 +72,7 @@ def count_values(array):
     return counter
 
 
-def white_balancing(image, percentile_value=99.9, MAX=255, min_counts=10, n_channels=3):
+def histogram_stretching(image, percentile_value=99.9, MAX=255, min_counts=10, n_channels=3):
     balanced_image = np.zeros(image.shape)
 
     for channel_index in range(n_channels):

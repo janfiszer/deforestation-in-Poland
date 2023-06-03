@@ -21,7 +21,7 @@ def segment(sample_image, model, model_input_size, white_balance=0, display_imag
     input_stride = model_input_size[0]
 
     if white_balance > 0:
-        sample_image = visualization.white_balancing(sample_image, percentile_value=white_balance)
+        sample_image = visualization.histogram_stretching(sample_image, percentile_value=white_balance)
 
     full_mask_size_x = int(sample_image.shape[0] * model_input_size[0]/input_stride)
     full_mask_size_y = int(sample_image.shape[1] * model_input_size[0]/input_stride)
@@ -70,7 +70,7 @@ def segment(sample_image, model, model_input_size, white_balance=0, display_imag
 #             patch = sample_image[i*input_stride:(i+1)*input_stride, j* input_stride:(j+1) * input_stride, :]
 #             # print(patch.shape)
 #             if white_balance:
-#                 patch = visualization.white_balancing(patch)
+#                 patch = visualization.histogram_stretching(patch)
 
 #             image = tf.keras.utils.array_to_img(patch)
 #             batch = np.array([tf.image.resize(image, size=model_input_size)])
