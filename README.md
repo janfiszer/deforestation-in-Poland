@@ -19,7 +19,7 @@ We will be using an external [dataset](https://www.kaggle.com/datasets/quadeer15
 ### Training results
 
 The training yields a model that performs satisfactorily on the test data. The ground truth labels weren't assigned ideally (see the image), however by keeping the right balance in the training (careful for overfitting) the model was detecting the forest more accurately than the ground truth labels. 
-<img src="images/predict-results.png" alt=predictions width="90%" height="90%">
+<img src="images/predict-results.png" alt=predictions width="90%" height="100%">
 
 ## Sentinel-2 Imagery
 
