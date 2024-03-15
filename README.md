@@ -10,7 +10,7 @@ Image segmentation is the process of dividing an image into multiple segments or
 
 For this project, we will be using the U-Net architecture for image segmentation. U-Net is a convolutional neural network architecture that is commonly used for biomedical image segmentation. It has a contracting path that captures the context and a symmetric expanding path that enables precise localization.
 
-<img src="images/unet.png" alt=predictions width="50%" height="50%">
+<img src="images/unet.png" alt=predictions width="100%" height="100%">
 ## External Dataset
 
 We will be using an external [dataset](https://www.kaggle.com/datasets/quadeer15sh/augmented-forest-segmentation/code) from Kaggle to train our image segmentation model to detect deforestation in the terrain of Puszcza Karpacka. This dataset was obtained from Land Cover Classification Track in DeepGlobe Challenge. For more details on the dataset refer the related publication - [DeepGlobe 2018: A Challenge to Parse the Earth through Satellite Images](https://arxiv.org/pdf/1805.06561.pdf). The images in the dataset were patched into images of size 256x256 to create more number of image samples.
