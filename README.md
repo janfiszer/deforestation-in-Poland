@@ -34,8 +34,11 @@ Its histogram for each color:
 <img src="images/histogram-not-balanced-2022.png" alt=predictions width="50%" height="50%">
 
 After this processing image got more vivid colors (alike to the training dataset):
+
 <img src="images/small-2022-balanced.png" alt=predictions width="50%" height="50%">
+
 The transformed dataset:
+
 <img src="images/histogram-balanced-2022.png" alt=predictions width="50%" height="50%">
 
 ### A failure
