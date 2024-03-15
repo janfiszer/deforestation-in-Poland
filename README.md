@@ -14,11 +14,17 @@ For this project, we will be using the U-Net architecture for image segmentation
 
 We will be using an external [dataset](https://www.kaggle.com/datasets/quadeer15sh/augmented-forest-segmentation/code) from Kaggle to train our image segmentation model to detect deforestation in the terrain of Puszcza Karpacka. This dataset was obtained from Land Cover Classification Track in DeepGlobe Challenge. For more details on the dataset refer the related publication - [DeepGlobe 2018: A Challenge to Parse the Earth through Satellite Images](https://arxiv.org/pdf/1805.06561.pdf). The images in the dataset were patched into images of size 256x256 to create more number of image samples.
 
+### Training results
+
+The training yield a model working very well on the test data. The ground truth labels weren't assigned ideally (see at the image), however by keeping the right balance in the training (careful for overfiting) the model was detecting the forest more accuratly than the ground truth labels. 
+<img src="images/predict-results.jpg" alt=predictions width="50%" height="50%">
+
 ## Sentinel-2 Imagery
 
 Sentinel-2 is a European satellite mission developed by the European Space Agency (ESA) in collaboration with the European Commission. It is part of the Copernicus program, which aims to provide accurate, timely, and easily accessible information to improve the management of the environment, understand and mitigate the effects of climate change, and ensure civil security.
 
-In this project, we will be using Sentinel-2 imagery of the Puszcza Karpacka forest in Poland. The U-Net architecture trained on the external dataset from Kaggle will be applied to the Sentinel-2 photos to detect deforestation in the terrain of Puszcza Karpacka. 
+In this project, we will be using Sentinel-2 imagery of the Puszcza Karpacka forest in Poland. The U-Net architecture trained on the external [dataset from Kaggle](https://www.kaggle.com/datasets/quadeer15sh/augmented-forest-segmentation/code) will be applied to the Sentinel-2 photos to detect deforestation in the terrain of Puszcza Karpacka. 
+
 
 ### A failure
 Due to few reason, described in the [report](https://github.com/janfiszer/deforestation-in-Poland/blob/main/report.pdf) satisfactory results were not archived.      
