@@ -53,4 +53,4 @@ The potential reasons and applicable solution are described deeply in the [repor
 The external dataset from Kaggle was used for training the model, while the Sentinel-2 imagery used for testing the model's performance on real-world data.
 
 # Bonus
-As a follow-up with the same data a GAN (Generative Adversarial Network) was trained for a short time. See [here](https://www.kaggle.com/datasets/quadeer15sh/augmented-forest-segmentation/code).
+As a follow-up with the same data a GAN (Generative Adversarial Network) was trained for a short time. See [here](https://github.com/janfiszer/deforestation-in-Poland/tree/main/GAN).
